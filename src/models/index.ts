@@ -18,4 +18,4 @@ export default {
     CancionListaReproduccion,
     UsuariosInvitados,
     UltimaCancion
-}
+};

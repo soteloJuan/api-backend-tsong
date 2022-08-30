@@ -15,4 +15,4 @@ export const googleVerify = async (token: string) => {
 
     return {given_name, family_name, email};
 
-}
+};

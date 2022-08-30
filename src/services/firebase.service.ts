@@ -7,13 +7,12 @@ import path from 'path';
 
 // Secretas Datas
 
-const projectId = `${process.env.firebase_projectId}`;
-const bucketName =  `${process.env.firebase_keyFilename}`;
-const bucketNameSliceUrl = `${process.env.firebase_bucketNameSliceUrl}`;
+const projectId = process.env.firebase_projectId as string;
+const bucketName =  process.env.firebase_bucketName as string;
+const bucketNameSliceUrl = process.env.firebase_bucketNameSliceUrl as string;
 const pathkeyFilename = `${process.env.firebase_pathkeyFilename}`;
 
 // Inicializaciones
-
 const gcs = new Storage({
     projectId: projectId,
     keyFilename: path.join(__dirname, `${pathkeyFilename}`)
@@ -36,14 +35,14 @@ export const uploadFileFirebase = async(filePath: string) => {
         }
     })
     .then((data) => {
-            let file = data[0];
+            const file = data[0];
             return Promise.resolve(`https://firebasestorage.googleapis.com/v0/b/${bucketNameSliceUrl}/o/`+ file.name +  "?alt=media&token=" + uuid);
     });
-}
+};
 
 
 export const deleteFileFirebase =  async(cancionID: string) => {
     
     return bucket.file(`${cancionID}`).delete();
 
-}
+};

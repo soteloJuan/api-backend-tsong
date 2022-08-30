@@ -39,7 +39,8 @@ export const login = async(req: Request, res: Response) =>{
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        // console.log('error db');
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
 
@@ -77,9 +78,9 @@ export const googleSignIn = async(req: Request, res: Response) => {
         res.status(200).json(msgSuccess(mensajeMandar, usuario, token));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 export const confirmarCorreo = async (req: Request, res: Response) => {
 
@@ -87,7 +88,7 @@ export const confirmarCorreo = async (req: Request, res: Response) => {
 
         const idUsuario = req.id;
 
-        await Usuario.findByIdAndUpdate( idUsuario, {confirmarCorreo: true})
+        await Usuario.findByIdAndUpdate( idUsuario, {confirmarCorreo: true});
 
         res.status(200).json({
             ok: true,
@@ -95,10 +96,10 @@ export const confirmarCorreo = async (req: Request, res: Response) => {
         });
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
-}
+};
 
 export const renewToken = async (req: Request, res: Response) => {
 
@@ -116,9 +117,9 @@ export const renewToken = async (req: Request, res: Response) => {
     }
 
     catch (error) {
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 

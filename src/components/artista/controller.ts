@@ -26,7 +26,7 @@ export const create = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Petion Realizado Exitosamente.', nuevoArtista));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
 
@@ -42,10 +42,10 @@ export const get = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', artistaDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
-}
+};
 
 
 
@@ -62,9 +62,9 @@ export const gets = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', artistasDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 export const getsNoPaginado = async (req: Request, res: Response) => {
 
@@ -79,9 +79,9 @@ export const getsNoPaginado = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', artistasDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 // // Por el momento solo estamos buscando por el nombre y apellidos. Pero puede cambiar a otras cosas.
@@ -101,9 +101,9 @@ export const search = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 
@@ -121,9 +121,9 @@ export const update = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 
@@ -133,17 +133,20 @@ export const updateImagen = async (req: Request, res: Response) => {
         
         const idArtista = req.params.id;
         const file = req.file;
+
         
         // Sino viene ningun archivo
         if(!file) return res.status(200).send(msgSuccess('Es necesario subir un archivo valido.'));
         
         
         const artistaDB = await Artista.findById(idArtista);
+        
+        
         const imgIdOld = artistaDB.imagenID || null;
-
+        
         // Si existe un imagenID, enotnce lo eliminamos primero. Creo que seria recomendable acceder a la db y extraer la info
         if(imgIdOld != null && imgIdOld != 'null' && imgIdOld != undefined) await eliminarImagenService(imgIdOld);
-
+        
         const rutaImg = req.file.path;
         const {imagenID, imagenURL} = await subirImagenService(rutaImg) as any;
         await fs.unlink(rutaImg);
@@ -154,10 +157,9 @@ export const updateImagen = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', nuevoArtista));
 
     }catch(error){
-        console.log(error);
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 export const deleteImagen = async (req: Request, res: Response) => {
@@ -177,9 +179,9 @@ export const deleteImagen = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 
@@ -200,8 +202,8 @@ export const deleteArtista = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', artistaDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 

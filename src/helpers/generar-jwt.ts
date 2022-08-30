@@ -12,7 +12,7 @@ export const generarJWT = (id: string) => {
             expiresIn: '24h'
         },(error, token) => {
             (error) ? (reject('No se pudo general el token')) : (resolve(token));
-        })
+        });
     });
 };
 
@@ -29,7 +29,7 @@ export const generarJWTEmail = (id: string) => {
             expiresIn: '365d'
         },(error, token) => {
             (error) ? (reject('No se pudo genera el token')) : (resolve(token));
-        })
+        });
     });
 
 };
