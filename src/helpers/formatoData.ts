@@ -1,4 +1,4 @@
-import {Request, Response} from 'express';
+import { Request } from 'express';
 
 // Modelos
 import Models from '../models/index';
