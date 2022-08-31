@@ -5,10 +5,8 @@ import fs from 'fs-extra';
 // helpers
 import {bcryptPassword} from '../../helpers/encriptacion';
 import {formateoRegistroUser, formatoUpdate} from '../../helpers/formatoData';
-import {generarJWTEmail} from '../../helpers/generar-jwt';
 
 // Servicices
-import {sendEmailService} from '../../services/send-mail.service';
 import {subirImagenService, eliminarImagenService} from '../../services/cloudinary.service';
 
 // messages
@@ -115,7 +113,6 @@ export const gets = async (req: Request, res: Response) => {
 };
 
 
-// Por el momento solo estamos buscando por el nombre y apellidos. Pero puede cambiar a otras cosas.
 export const search = async (req: Request, res: Response) => {
     try{
 
@@ -192,14 +189,12 @@ export const updateImagen = async (req: Request, res: Response) => {
         const idUser = req.params.id;
         const file = req.file;
         
-        // Sino viene ningun archivo
         if(!file) return res.status(409).send(msgError('Es necesario subir un archivo valido.'));
         
         
         const usuarioDB = await Usuario.findById(idUser);
         const imgIdOld = usuarioDB.imagenID || null;
 
-        // Si existe un imagenID, enotnce lo eliminamos primero. Creo que seria recomendable acceder a la db y extraer la info
         if(imgIdOld != null && imgIdOld != 'null' && imgIdOld != undefined) await eliminarImagenService(imgIdOld);
 
         const rutaImg = req.file.path;
@@ -212,7 +207,6 @@ export const updateImagen = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', nuevoUsuario));
 
     }catch(error){
-        console.log(error);
         res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
@@ -259,9 +253,3 @@ export const deleteUser = async (req: Request, res: Response) => {
         res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
-
-
-
-// MUSICA PARA PROGRAMAR https://www.youtube.com/watch?v=n9Y2Eb4BaSg
-// MUSICA PARA PROGRAMAR https://www.youtube.com/watch?v=H3QzSY-a4IQ
-

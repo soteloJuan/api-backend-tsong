@@ -92,7 +92,6 @@ export const getsPorAlbumPaginado = async (req: Request, res: Response) => {
         const idAlbum: string = req.params.idAlbum;
         const pagina: any = req.params.pagina || 1;
 
-
         const cancionDB: any =  await Cancion.paginate({album: idAlbum},{limit: 12, page: pagina});
 
         if(cancionDB.docs == '') return res.status(200).send(msgSuccess('No Existen Canciones'));
@@ -132,7 +131,6 @@ export const update = async (req: Request, res: Response) => {
         const idCancion = req.params.id;
         const updateData: any = formatoUpdateCancion(req);
 
-
         const cancionNuevo = await Cancion.findByIdAndUpdate(idCancion, updateData,{new: true});
 
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', cancionNuevo));
@@ -148,36 +146,25 @@ export const updateCancion = async (req: Request, res: Response) => { // AQUI VA
         const idCancion = req.params.id;
         const file = req.file;
         
-        // Sino viene ningun archivo
         if(!file) return res.status(409).send(msgError('Es necesario subir un archivo valido.'));
-        
         
         const cancionDB = await Cancion.findById(idCancion);
         const fileOLD = cancionDB.cancionID || null;
 
-        // Aqui se tiene que eliminar el archivo
         if(fileOLD != null && fileOLD != 'null' && fileOLD != undefined) await deleteFileFirebase(fileOLD);
-
 
         const rutaFile = req.file.path;
         const nameFile = req.file.filename;
 
-
-        // Se tiene que subir el archivo
         const resultadoURL = await uploadFileFirebase(rutaFile);
 
         await fs.unlink(rutaFile);
 
         const nuevaCancion = await Cancion.findByIdAndUpdate(idCancion,{cancionURL:resultadoURL, cancionID:nameFile}, {new: true});
 
-
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', nuevaCancion));
 
-        
-
-
     }catch(error){
-        console.log(error);
         res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
@@ -190,14 +177,11 @@ export const updateImagen = async (req: Request, res: Response) => {
         const idCancion = req.params.id;
         const file = req.file;
         
-        // Sino viene ningun archivo
-        if(!file) return res.status(409).send(msgError('Es necesario subir un archivo valido.'));
-        
+        if(!file) return res.status(409).send(msgError('Es necesario subir un archivo valido.'));        
         
         const cancionDB = await Cancion.findById(idCancion);
         const imgIdOld = cancionDB.imagenID || null;
 
-        // Si existe un imagenID, enotnce lo eliminamos primero. Creo que seria recomendable acceder a la db y extraer la info
         if(imgIdOld != null && imgIdOld != 'null' && imgIdOld != undefined) await eliminarImagenService(imgIdOld);
 
         const rutaImg = req.file.path;
@@ -237,11 +221,6 @@ export const deleteImagen = async (req: Request, res: Response) => {
 };
 
 
-
-
-
-
-
 export const deleteCancion = async (req: Request, res: Response) => {
     try{
 
@@ -256,10 +235,7 @@ export const deleteCancion = async (req: Request, res: Response) => {
 
         if(imagenID != null && imagenID != 'null' && imagenID != undefined) await eliminarImagenService(imagenID);
 
-        
-
         if(cancionID != null && cancionID != 'null' && cancionID != undefined) await deleteFileFirebase(cancionID);
-
 
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', cancionDB));
 
@@ -267,20 +243,4 @@ export const deleteCancion = async (req: Request, res: Response) => {
         res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
-
-
-
-// MUSICA PARA PROGRAMAR https://www.youtube.com/watch?v=n9Y2Eb4BaSg
-// MUSICA PARA PROGRAMAR https://www.youtube.com/watch?v=H3QzSY-a4IQ
-
-
-
-
-
-
-
-
-
-
-
 

@@ -141,7 +141,7 @@ router.delete('/delete/:id',
         check('id','No es un Id valido').isMongoId(),
         check('id').custom(existeUsuarioId),
         validarCampos,
-        validarAdminJWT // Solo un administrador puede borrar un usuario
+        validarAdminJWT
     ],
     deleteUser
 );

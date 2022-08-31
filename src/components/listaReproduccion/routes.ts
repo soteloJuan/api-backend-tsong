@@ -93,11 +93,6 @@ router.put('/update/:id',
     update
 );
 
-/*
-    Importante cuando se elimine un album tambien se tiene que eliminar los diferentes canciones ligadas a este y tambien los 
-    usuarios invitados.
-*/
-
 router.put('/updateImagen/:id',
     [
         check('id','No es un Id valido').isMongoId(),

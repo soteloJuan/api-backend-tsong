@@ -6,11 +6,9 @@ import {googleVerify} from '../../services/google.service';
 
 
 // models
-import Administrador from '../administrador/model';
 import Usuario from '../usuario/model';
 
 // Helpers
-import {formateoRegistroUser} from '../../helpers/formatoData';
 import {formateoLogin} from '../../helpers/formatoData';
 import {generarJWT} from '../../helpers/generar-jwt';
 
@@ -32,14 +30,12 @@ export const login = async(req: Request, res: Response) =>{
         if(usuario.bloqueado) return res.status(400).json(msgError('Usuario Bloqueado'));
         if(!usuario.confirmarCorreo) return res.status(400).json(msgError('Aun no ha confirmado su correo'));
 
-        
         const token: any = await generarJWT(usuario._id);
 
         res.status(200).json(msgSuccess('Loguiado Correctamente', usuario, token));
 
 
     }catch(error){
-        // console.log('error db');
         res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
@@ -120,10 +116,3 @@ export const renewToken = async (req: Request, res: Response) => {
         res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
-
-
-
-
-
-
-

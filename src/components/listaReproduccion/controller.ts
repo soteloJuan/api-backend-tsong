@@ -1,7 +1,6 @@
 import {Request, Response} from 'express';
 import fs from 'fs-extra';
 
-
 // helpers
 import {formateoRegistroListaReproduccion, formatoUpdateListaReproduccion} from '../../helpers/formatoData';
 
@@ -80,7 +79,6 @@ export const getsGeneral = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', listaReproduccionDB));
 
     }catch(error){
-        console.log('Este es el error : ', error);
         res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
@@ -151,14 +149,11 @@ export const updateImagen = async (req: Request, res: Response) => {
         const idListaReproduccion = req.params.id;
         const file = req.file;
 
-        // Sino viene ningun archivo
         if(!file) return res.status(200).send(msgSuccess('Es necesario subir un archivo valido.'));
-        
-        
+                
         const listaReproduccionDB = await ListaReproduccion.findById(idListaReproduccion);
         const imgIdOld = listaReproduccionDB.imagenID || null;
 
-        // Si existe un imagenID, enotnce lo eliminamos primero. Creo que seria recomendable acceder a la db y extraer la info
         if(imgIdOld != null && imgIdOld != 'null' && imgIdOld != undefined) await eliminarImagenService(imgIdOld);
 
         const rutaImg = req.file.path;
@@ -170,7 +165,6 @@ export const updateImagen = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', nuevoAlbum));
 
     }catch(error){
-        console.log(error);
         res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
@@ -202,12 +196,8 @@ export const deleteListaReproduccion = async (req: Request, res: Response) => {
     try{
 
         const idListaReproduccion = req.params.id;
-
         const listaReproduccionDB: any = await ListaReproduccion.findById(idListaReproduccion).exec();
-
         await listaReproduccionDB.remove();
-
-
         const imgAlbum = listaReproduccionDB.imagenID;
 
         if(imgAlbum != null && imgAlbum != 'null' && imgAlbum != undefined) await eliminarImagenService(imgAlbum);

@@ -83,9 +83,6 @@ export const getsNoPaginado = async (req: Request, res: Response) => {
     }
 };
 
-
-// // Por el momento solo estamos buscando por el nombre y apellidos. Pero puede cambiar a otras cosas.
-// Podemos buscar por - pais
 export const search = async (req: Request, res: Response) => {
     try{
 
@@ -134,17 +131,13 @@ export const updateImagen = async (req: Request, res: Response) => {
         const idArtista = req.params.id;
         const file = req.file;
 
-        
-        // Sino viene ningun archivo
         if(!file) return res.status(200).send(msgSuccess('Es necesario subir un archivo valido.'));
-        
         
         const artistaDB = await Artista.findById(idArtista);
         
         
         const imgIdOld = artistaDB.imagenID || null;
         
-        // Si existe un imagenID, enotnce lo eliminamos primero. Creo que seria recomendable acceder a la db y extraer la info
         if(imgIdOld != null && imgIdOld != 'null' && imgIdOld != undefined) await eliminarImagenService(imgIdOld);
         
         const rutaImg = req.file.path;
@@ -152,7 +145,6 @@ export const updateImagen = async (req: Request, res: Response) => {
         await fs.unlink(rutaImg);
 
         const nuevoArtista = await Artista.findByIdAndUpdate(idArtista,{imagenID, imagenURL}, {new: true});
-
 
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', nuevoArtista));
 
