@@ -14,5 +14,5 @@ export const validarCampos = (req: Request, res: Response, next: NextFunction) =
     }
     next();
 
-}
+};
 

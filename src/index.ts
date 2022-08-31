@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import app from './app';
-import path from 'path';
 import {dbConnection} from './database/databse';
 
 // Conexion base de datos

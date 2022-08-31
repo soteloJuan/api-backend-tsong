@@ -19,4 +19,4 @@ export const dbConnection = async() => {
         throw new Error('Error a la hora de iniciar la base de datos');
     }
 
-}
+};

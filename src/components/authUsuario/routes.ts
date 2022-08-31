@@ -1,4 +1,4 @@
-import {Router} from 'express'
+import {Router} from 'express';
 import {check} from 'express-validator';
 
 // controllers
@@ -7,7 +7,7 @@ import {
     confirmarCorreo,
     renewToken,
     googleSignIn    
-} from './controller'
+} from './controller';
 
 // middleware
 import { validarCampos } from '../../middlewares/validar-campos';

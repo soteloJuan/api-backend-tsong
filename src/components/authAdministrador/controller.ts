@@ -32,7 +32,7 @@ export const login = async(req: Request, res: Response) =>{
         res.status(200).json(msgSuccess('Loguiado Correctamente', administrador, token));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
 };
@@ -43,7 +43,7 @@ export const confirmarCorreo = async (req: Request, res: Response) => {
 
         const idAdministrador = req.id;
 
-        await Administrador.findByIdAndUpdate( idAdministrador, {confirmarCorreo: true})
+        await Administrador.findByIdAndUpdate( idAdministrador, {confirmarCorreo: true});
 
         res.status(200).json({
             ok: true,
@@ -51,10 +51,10 @@ export const confirmarCorreo = async (req: Request, res: Response) => {
         });
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
-}
+};
 
 
 
@@ -74,9 +74,9 @@ export const renewToken = async (req: Request, res: Response) => {
     }
 
     catch (error) {
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 

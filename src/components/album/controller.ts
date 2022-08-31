@@ -1,7 +1,6 @@
 import {Request, Response} from 'express';
 import fs from 'fs-extra';
 
-
 // helpers
 import {formateoRegistroAlbum, formatoUpdateAlbum} from '../../helpers/formatoData';
 
@@ -14,19 +13,13 @@ import {msgError, msgSuccess} from './dto';
 // Models
 import Album from './model';
 
-
 export const create = async (req: Request, res: Response) => {
-
     try{
-
         const nuevoAlbum =  formateoRegistroAlbum(req);
-    
         await nuevoAlbum.save();
-
         res.status(200).send(msgSuccess('Petion Realizado Exitosamente.', nuevoAlbum));
-
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
 
@@ -34,18 +27,14 @@ export const create = async (req: Request, res: Response) => {
 export const get = async (req: Request, res: Response) => {
 
     try{
-
         const idAlbum = req.params.id;
-
         const albumDB = await Album.findById(idAlbum);
-
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', albumDB));
-
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
-}
+};
 
 
 export const gets = async (req: Request, res: Response) => {
@@ -61,9 +50,9 @@ export const gets = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', albumDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 export const getsNoPaginado = async (req: Request, res: Response) => {
 
@@ -76,9 +65,9 @@ export const getsNoPaginado = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 export const getsPorArtista = async (req: Request, res: Response) => {
 
@@ -94,7 +83,7 @@ export const getsPorArtista = async (req: Request, res: Response) => {
     }catch(error){
         res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 export const getsPorArtistaPaginado = async (req: Request, res: Response) => {
@@ -115,10 +104,8 @@ export const getsPorArtistaPaginado = async (req: Request, res: Response) => {
     }catch(error){
         res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
-
-// Por el momento solo estamos buscando por el nombre y apellidos. Pero puede cambiar a otras cosas.
 export const search = async (req: Request, res: Response) => {
     try{
 
@@ -133,29 +120,24 @@ export const search = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', albumDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
-
-
-
+};
 
 export const update = async (req: Request, res: Response) => {
     try{
         
         const idAlbum = req.params.id;
         const updateData = formatoUpdateAlbum(req);
-
-
         const albumNuevo = await Album.findByIdAndUpdate(idAlbum, updateData,{new: true});
 
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', albumNuevo));
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 
@@ -186,11 +168,9 @@ export const updateImagen = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', nuevoAlbum));
 
     }catch(error){
-        console.log(error);
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
-
+};
 
 export const deleteImagen = async (req: Request, res: Response) => {
     try{
@@ -209,47 +189,21 @@ export const deleteImagen = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
-
-
-
-
+};
 
 export const deleteAlbum = async (req: Request, res: Response) => {
     try{
 
         const idAlbum = req.params.id;
-
         const albumDB = await Album.findById(idAlbum);
-
         await albumDB.remove();
-
         const imgAlbum = albumDB.imagenID;
-
         if(imgAlbum != null && imgAlbum != 'null' && imgAlbum != undefined) await eliminarImagenService(imgAlbum);
-
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', albumDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
-
-
-
-// MUSICA PARA PROGRAMAR https://www.youtube.com/watch?v=n9Y2Eb4BaSg
-// MUSICA PARA PROGRAMAR https://www.youtube.com/watch?v=H3QzSY-a4IQ
-
-
-
-
-
-
-
-
-
-
-
-
+};

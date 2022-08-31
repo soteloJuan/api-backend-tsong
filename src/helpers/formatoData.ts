@@ -24,7 +24,7 @@ export const  formateoRegistroAdmin = (req: Request) => {
     });
 
     return nuevoAdministrador;
-}
+};
 
 export const  formateoRegistroUser = (req: Request) => {
 
@@ -43,7 +43,7 @@ export const  formateoRegistroUser = (req: Request) => {
     });
 
     return nuevoAdministrador;
-}
+};
 
 export const  formateoRegistroArtista = (req: Request) => {
 
@@ -62,7 +62,7 @@ export const  formateoRegistroArtista = (req: Request) => {
     });
 
     return nuevoArtista;
-}
+};
 
 
 export const formateoLogin = (req: Request) => {
@@ -70,7 +70,7 @@ export const formateoLogin = (req: Request) => {
     const loginData: LoginInterface = {
         email: req.body.email,
         password: req.body.password
-    }
+    };
 
     return loginData;
 
@@ -84,8 +84,8 @@ export const formatoUpdate = (req: Request) => {
         apellidos :req.body.apellidos,
         email : req.body.email,
         bloqueado :req.body.bloqueado,
-    }
-}
+    };
+};
 
 export const formatoUpdateArtista = (req: Request) => {
 
@@ -95,8 +95,8 @@ export const formatoUpdateArtista = (req: Request) => {
         descripcion :req.body.descripcion,
         fechaInicio :req.body.fechaInicio,
         bloqueado: req.body.bloqueado
-    }
-}
+    };
+};
 
 export const formatoUpdateAlbum = (req: Request) => {
 
@@ -106,8 +106,8 @@ export const formatoUpdateAlbum = (req: Request) => {
         fechaLanzamiento :req.body.fechaLanzamiento,
         artista: req.body.artista,
         bloqueado: req.body.bloqueado
-    }
-}
+    };
+};
 
 
 
@@ -128,7 +128,7 @@ export const  formateoRegistroAlbum = (req: Request) => {
     });
 
     return nuevoArtista;
-}
+};
 
 export const  formateoRegistroCancion = (req: Request) => {
 
@@ -153,7 +153,7 @@ export const  formateoRegistroCancion = (req: Request) => {
     });
 
     return nuevoArtista;
-}
+};
 
 export const formatoUpdateCancion = (req: Request) => {
 
@@ -166,8 +166,8 @@ export const formatoUpdateCancion = (req: Request) => {
         bloqueado :req.body.bloqueado,
         album :req.body.album,
         artista :req.body.artista,
-    }
-}
+    };
+};
 
 
 export const formateoRegistroListaReproduccion = (req: Request) => {
@@ -183,15 +183,15 @@ export const formateoRegistroListaReproduccion = (req: Request) => {
     });
 
     return nuevoArtista;
-}
+};
 export const formatoUpdateListaReproduccion = (req: Request) => {
 
     return {
         nombre: req.body.nombre,
         usuario:req.body.usuario,
 
-    }
-}
+    };
+};
 
 
 export const  formateoRegistroCancionListaReproduccion = (req: Request) => {
@@ -207,14 +207,14 @@ export const  formateoRegistroCancionListaReproduccion = (req: Request) => {
     });
 
     return nuevoCancionListaReproduccion;
-}
+};
 export const formatoUpdateCancionListaReproduccion = (req: Request) => {
 
     return {
         listaReproduccion: req.body.listaReproduccion,
         cancion:req.body.cancion,
-    }
-}
+    };
+};
 
 
 
@@ -231,7 +231,7 @@ export const  formateoRegistroUsuariosInvitados = (req: Request) => {
     });
 
     return nuevoUsuariosInvitados;
-}
+};
 
 export const  formateoRegistroUltimaCancion = (req: Request) => {
 
@@ -246,15 +246,15 @@ export const  formateoRegistroUltimaCancion = (req: Request) => {
     });
 
     return nuevoUsuariosInvitados;
-}
+};
 
 export const formatoUpdateUltimaCancion = (req: Request) => {
 
     return {
         cancion:req.body.cancion,
         usuario: req.body.usuario,
-    }
-}
+    };
+};
 
 
 

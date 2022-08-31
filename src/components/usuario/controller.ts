@@ -36,7 +36,7 @@ export const create = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Le hemos enviado un correo a su email.', nuevoUsuario));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
 
@@ -52,10 +52,10 @@ export const get = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', usuarioDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
-}
+};
 
 
 export const getMergeMap = async (req: Request, res: Response) => {
@@ -69,10 +69,10 @@ export const getMergeMap = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', usuarioDB.email));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
-}
+};
 
 export const getPorEmail = async (req: Request, res: Response) => {
 
@@ -87,10 +87,10 @@ export const getPorEmail = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', usuarioDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
-}
+};
 
 
 
@@ -110,9 +110,9 @@ export const gets = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 // Por el momento solo estamos buscando por el nombre y apellidos. Pero puede cambiar a otras cosas.
@@ -131,9 +131,9 @@ export const search = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 
@@ -158,9 +158,9 @@ export const update = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 export const updatePassword = async (req: Request, res: Response) => {
@@ -180,9 +180,9 @@ export const updatePassword = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente'));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 
@@ -213,9 +213,9 @@ export const updateImagen = async (req: Request, res: Response) => {
 
     }catch(error){
         console.log(error);
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 export const deleteImagen = async (req: Request, res: Response) => {
@@ -235,9 +235,9 @@ export const deleteImagen = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 export const deleteUser = async (req: Request, res: Response) => {
     try{
@@ -256,9 +256,9 @@ export const deleteUser = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 

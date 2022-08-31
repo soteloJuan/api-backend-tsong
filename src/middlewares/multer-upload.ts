@@ -27,7 +27,7 @@ const fileFilterIMG = (req: any, file: any, cb: any) => {
 };
 const fileFilterCancion = (req: any, file: any, cb: any) => {
     const tipoExtension: any= path.extname(file.originalname).toLowerCase();
-    const extensiones: Array<String> = extensionesDeAudio();
+    const extensiones: Array<string> = extensionesDeAudio();
 
     // Si no cumple con algunas de la condiones entonces se rechaza
     if(!extensiones.includes(tipoExtension)){
@@ -63,5 +63,5 @@ const extensionesDeAudio = (): Array<string> => {
         '.aac',
         'dsd',
         'midi'
-    ]
-}
+    ];
+};

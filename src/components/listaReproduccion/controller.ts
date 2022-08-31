@@ -27,7 +27,7 @@ export const create = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
 
@@ -43,10 +43,10 @@ export const get = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', listaReproduccionDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
-}
+};
 
 
 export const gets = async (req: Request, res: Response) => {
@@ -63,9 +63,9 @@ export const gets = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', listaReproduccionDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 export const getsGeneral = async (req: Request, res: Response) => {
 
@@ -81,9 +81,9 @@ export const getsGeneral = async (req: Request, res: Response) => {
 
     }catch(error){
         console.log('Este es el error : ', error);
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 export const search = async (req: Request, res: Response) => {
@@ -101,9 +101,9 @@ export const search = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', listaReproduccionDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 export const searchGeneral = async (req: Request, res: Response) => {
@@ -120,9 +120,9 @@ export const searchGeneral = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', listaReproduccionDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 
@@ -138,9 +138,9 @@ export const update = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 
@@ -171,9 +171,9 @@ export const updateImagen = async (req: Request, res: Response) => {
 
     }catch(error){
         console.log(error);
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 export const deleteImagen = async (req: Request, res: Response) => {
@@ -192,9 +192,9 @@ export const deleteImagen = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', listaReproduccionDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 export const deleteListaReproduccion = async (req: Request, res: Response) => {
@@ -216,7 +216,7 @@ export const deleteListaReproduccion = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', listaReproduccionDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
-}
+};

@@ -6,5 +6,5 @@ export const msgSuccess = (mensaje: string, data = null) => {
         ok:true,
         mensaje,
         data
-    }
-}
+    };
+};

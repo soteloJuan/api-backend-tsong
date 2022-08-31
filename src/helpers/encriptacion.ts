@@ -15,4 +15,4 @@ export const bcryptPassword = async(password: string) => {
         return error;
 
     }
-}
+};

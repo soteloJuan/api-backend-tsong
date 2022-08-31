@@ -25,7 +25,7 @@ export const create = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Petion Realizado Exitosamente.', nuevoCLR));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
 
@@ -41,10 +41,10 @@ export const get = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', CLRDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
-}
+};
 
 
 export const gets = async (req: Request, res: Response) => {
@@ -60,9 +60,9 @@ export const gets = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', CLRBDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 // Por el momento solo estamos buscando por el nombre y apellidos. Pero puede cambiar a otras cosas.
@@ -115,9 +115,9 @@ export const deleteCancionListareproduccion = async (req: Request, res: Response
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente'));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 

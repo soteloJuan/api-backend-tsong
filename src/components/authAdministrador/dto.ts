@@ -7,5 +7,5 @@ export const msgSuccess = (mensaje: string, data = {}, token: string) => {
         mensaje,
         data,
         token
-    }
-}
+    };
+};

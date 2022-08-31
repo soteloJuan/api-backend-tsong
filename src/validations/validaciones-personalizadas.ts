@@ -9,7 +9,7 @@ export const existeEmailAdministrador = async(email = '') => {
     const existeEmail = await Models.Administrador.findOne({email});
     if(existeEmail) 
         throw new Error(`El email: ${ email }, ya está registrado`);
-}
+};
 
 export const existeAdministradorId = async (id: string) => {
 
@@ -17,7 +17,7 @@ export const existeAdministradorId = async (id: string) => {
 
     if(!administrador)
         throw new Error(`El ID de administrador no existe.`);
-}
+};
 
 
 export const existeEmailUsuario = async(email = '') => {
@@ -26,7 +26,7 @@ export const existeEmailUsuario = async(email = '') => {
     const existeEmail = await Models.Usuario.findOne({email});
     if(existeEmail)     
         throw new Error(`El email: ${ email }, ya está registrado`);
-}
+};
 
 
 
@@ -36,7 +36,7 @@ export const existeUsuarioId = async (id: string) => {
 
     if(!usuarioDB)
         throw new Error(`El ID del Usuario no existe.`);
-}
+};
 
 export const existePais = async(fechaInicio: string) => {
 
@@ -45,7 +45,7 @@ export const existePais = async(fechaInicio: string) => {
     const paises: Array<string> = paiesesDelMundo();
     if(!paises.includes(nacion))
         throw new Error(`La nacionalidad no es valido.`);
-}
+};
 
 export const existeArtistaId = async (id: string) => {
 
@@ -53,7 +53,7 @@ export const existeArtistaId = async (id: string) => {
 
     if(!artistaDB)
         throw new Error(`El ID del Artista no existe.`);
-}
+};
 
 export const existeAlbumId = async (id: string) => {
 
@@ -61,7 +61,7 @@ export const existeAlbumId = async (id: string) => {
 
     if(!albumDB)
         throw new Error(`El ID del Album no existe.`);
-}
+};
 
 
 export const existeCancionId = async (id: string) => {
@@ -70,7 +70,7 @@ export const existeCancionId = async (id: string) => {
 
     if(!cancionDB)
         throw new Error(`El ID de la Canción no existe.`);
-}
+};
 
 export const existeGeneroCancion = async (genero: string) => {
 
@@ -90,7 +90,7 @@ export const existeListaReproduccionId = async (id: string) => {
 
     if(!listaReproduccionDB)
         throw new Error(`El ID de la Lista de Reproduccion no existe.`);
-}
+};
 
 
 export const existeCancionListaReproduccionId = async (id: string) => {
@@ -99,7 +99,7 @@ export const existeCancionListaReproduccionId = async (id: string) => {
 
     if(!cancionListaReproduccionDB)
         throw new Error(`El ID de la Cancion de Lista de Reproduccion no existe.`);
-}
+};
 
 
 export const existeUsuariosInvitadosId = async (id: string) => {
@@ -108,7 +108,7 @@ export const existeUsuariosInvitadosId = async (id: string) => {
 
     if(!usuariosInvitadosDB)
         throw new Error(`El ID de UsuariosInvitados no existe.`);
-}
+};
 
 export const existeUltimaCancionID = async (id: string) => {
 
@@ -116,7 +116,7 @@ export const existeUltimaCancionID = async (id: string) => {
 
     if(!ultimaCancionID)
         throw new Error(`El ID de la ultima Cancion no existe.`);
-}
+};
 
 
 
@@ -436,8 +436,8 @@ const generosMusicales = (): Array<string> => {
         "ZAMBRA",
         "ZARZUELA",
         "ZORTZICO"
-    ]
-}
+    ];
+};
 
 const paiesesDelMundo = (): Array<string> => {
     return [
@@ -636,4 +636,4 @@ const paiesesDelMundo = (): Array<string> => {
             "ZAMBIA",
             "ZIMBABUE"
     ];
-} 
+}; 

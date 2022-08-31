@@ -2,7 +2,7 @@ import {Router} from 'express';
 
 // Routes
 import administrador from '../components/administrador/routes';
-import authAdministrador from '../components/authAdministrador/routes'
+import authAdministrador from '../components/authAdministrador/routes';
 import usuario from '../components/usuario/routes';
 import authUsuario from '../components/authUsuario/routes';
 import artista from '../components/artista/routes';

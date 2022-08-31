@@ -27,7 +27,7 @@ export const create = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Petion Realizado Exitosamente.', nuevaCancion));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 };
 
@@ -43,10 +43,10 @@ export const get = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', cancionDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
 
-}
+};
 
 
 export const gets = async (req: Request, res: Response) => {
@@ -62,9 +62,9 @@ export const gets = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', cancionDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 export const getsPorAlbum = async (req: Request, res: Response) => {
 
@@ -82,7 +82,7 @@ export const getsPorAlbum = async (req: Request, res: Response) => {
     }catch(error){
         res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 export const getsPorAlbumPaginado = async (req: Request, res: Response) => {
@@ -103,7 +103,7 @@ export const getsPorAlbumPaginado = async (req: Request, res: Response) => {
     }catch(error){
         res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 export const search = async (req: Request, res: Response) => {
     try{
@@ -119,9 +119,9 @@ export const search = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', cancionDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 
@@ -138,9 +138,9 @@ export const update = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', cancionNuevo));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 export const updateCancion = async (req: Request, res: Response) => { // AQUI VAMOS A MODIFICAR DONDE UTILIZAMOS EL SERVICIO DE DIGITAL OCEAN
     try{
@@ -178,9 +178,9 @@ export const updateCancion = async (req: Request, res: Response) => { // AQUI VA
 
     }catch(error){
         console.log(error);
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 
@@ -210,9 +210,9 @@ export const updateImagen = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', nuevaCancion));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 export const deleteImagen = async (req: Request, res: Response) => {
@@ -232,9 +232,9 @@ export const deleteImagen = async (req: Request, res: Response) => {
 
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 
@@ -264,9 +264,9 @@ export const deleteCancion = async (req: Request, res: Response) => {
         res.status(200).send(msgSuccess('Peticion realizado Exitosamente', cancionDB));
 
     }catch(error){
-        res.status(500).json(msgError('Contacte con el administrador'))
+        res.status(500).json(msgError('Contacte con el administrador'));
     }
-}
+};
 
 
 

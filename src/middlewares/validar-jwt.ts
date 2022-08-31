@@ -1,5 +1,5 @@
-import {Request, Response, NextFunction} from 'express'
-import jwt from 'jsonwebtoken'
+import {Request, Response, NextFunction} from 'express';
+import jwt from 'jsonwebtoken';
 
 // modelos
 import Models from '../models/index';
@@ -15,7 +15,7 @@ export const validarAdminJWT = async(req: Request, res: Response, next: NextFunc
 
         let token: any;
         // Evaluamos en donde viene el token.
-        (!req.header('token'))? (token = req.params.token): ( token = req.header('token'))
+        (!req.header('token'))? (token = req.params.token): ( token = req.header('token'));
     
         // Si esta vacion significa que no mandaron el token por ningun medio.
         if(!token) return res.status(400).json({ ok:false, mensage:'El token es obligatorio' });
@@ -38,7 +38,7 @@ export const validarAdminJWT = async(req: Request, res: Response, next: NextFunc
         });
     }
 
-}
+};
 
 
 /* Esta funcion es para validar que el administrador que vaya a actualizar los datos, sea un administrador con
@@ -71,7 +71,7 @@ export const validarJWTAdminPropioAdminPro = async(req: Request, res: Response, 
         });
     }
 
-}
+};
 
 // esto es solo para verificar que sea un usuario o un admin nadamas. No revisa ningun otro parametro
 export const validarJWTAdminOUser = async(req: Request, res: Response, next: NextFunction) => {
@@ -109,7 +109,7 @@ export const validarJWTAdminOUser = async(req: Request, res: Response, next: Nex
         });
     }
 
-}
+};
 
 
 /* De esta forma verificamos que solo un usuario  pueda realizar la operación */ 
@@ -119,7 +119,7 @@ export const validarUserJWT = async(req: Request, res: Response, next: NextFunct
 
         let token: any;
         // Evaluamos en donde viene el token.
-        (!req.header('token'))? (token = req.params.token): ( token = req.header('token'))
+        (!req.header('token'))? (token = req.params.token): ( token = req.header('token'));
     
         // Si esta vacion significa que no mandaron el token por ningun medio.
         if(!token) return res.status(400).json({ ok:false, mensage:'El token es obligatorio' });
@@ -142,7 +142,7 @@ export const validarUserJWT = async(req: Request, res: Response, next: NextFunct
         });
     }
 
-}
+};
 
 /* De esta forma verificamos que solo un usuario  pueda actualizar/consultar/elimnar sus propios datos,
     y que un Administrador tambien lo pueda hacer. */ 
@@ -179,7 +179,7 @@ export const validarJWTUserPropioOAdmin = async(req: Request, res: Response, nex
         });
     }
 
-}
+};
 
 
 /* El id que viene en el token tiene que ser igual al de un administrador.
@@ -208,7 +208,7 @@ export const validarJWTListaRepAdminOUserQueLoCreo = async(req: Request, res: Re
 
         
         if(!administrador && usuario){
-            let listaReproduccionDB: any = await Models.ListaReproduccion.findById(listaReproduccionID);
+            const listaReproduccionDB: any = await Models.ListaReproduccion.findById(listaReproduccionID);
             
             if(listaReproduccionDB.usuario != usuario.id) return res.status(401).json({ msg: 'Token no válido,  No puedes acceder a este servicio..' });
         }
@@ -228,7 +228,7 @@ export const validarJWTListaRepAdminOUserQueLoCreo = async(req: Request, res: Re
         });
     }
 
-}
+};
 
 /*CLR = CANCIONLISTAREPRODUCCION
 Para asegurar que el que haga uso del servico sea un administrador. Y si es un usuario, tiene que ser el usuario
@@ -261,7 +261,7 @@ export const validarJWTCLR = async(req: Request, res: Response, next: NextFuncti
         if(!administrador && !usuario) return res.status(401).json({ msg: 'Token no válido,  No puedes acceder a este servicio..' });
         
         if(!administrador && usuario){
-            let listaReproduccionDB: any = await Models.ListaReproduccion.findById(CLRDB.listaReproduccion);
+            const listaReproduccionDB: any = await Models.ListaReproduccion.findById(CLRDB.listaReproduccion);
             if(listaReproduccionDB.usuario != usuario.id) return res.status(401).json({ msg: 'Token no válido,  No  tienes accedeso a este servicio.'  });
         }
 
@@ -278,7 +278,7 @@ export const validarJWTCLR = async(req: Request, res: Response, next: NextFuncti
         });
     }
 
-}
+};
 
 
 /* Para asegurar que el que haga uso del servico sea un administrador. Y si es un usuario, tiene que ser el usuario
@@ -311,7 +311,7 @@ export const validarJWTUsuariosInvitados = async(req: Request, res: Response, ne
         if(!administrador && !usuario) return res.status(401).json({ msg: 'Token no válido,  No puedes acceder a este servicio.' });
         
         if(!administrador && usuario){
-            let listaReproduccionDB: any = await Models.ListaReproduccion.findById(usuariosInvitadosDB.listaReproduccion);
+            const listaReproduccionDB: any = await Models.ListaReproduccion.findById(usuariosInvitadosDB.listaReproduccion);
             if(listaReproduccionDB.usuario != usuario.id) return res.status(401).json({ msg: 'Token no válido,  No tienes accedeso a este servicio.' });
         }
 
@@ -327,7 +327,7 @@ export const validarJWTUsuariosInvitados = async(req: Request, res: Response, ne
         });
     }
 
-}
+};
 
 
 
@@ -374,6 +374,6 @@ export const validarJWTUltimaCancionPropioOAdmin = async(req: Request, res: Resp
         });
     }
 
-}
+};
 
 

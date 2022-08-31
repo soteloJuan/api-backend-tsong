@@ -8,8 +8,8 @@
     "dev": "nodemon -e ts --exec  \"npm run buildrun\"",
     "buildrun": "npm run build && node ./dist/index.js",
     "build": "tsc",
-    "lint": "eslint src/*",
-    "lint-fix": "eslint src/* --fix"
+    "lint": "eslint ./src/",
+    "lint-fix": "eslint ./src/ --fix"
   },
   "author": "",
   "license": "ISC",
