@@ -151,7 +151,6 @@ export const validarJWTUserPropioOAdmin = async(req: Request, res: Response, nex
     try{
 
         const token = req.header('token') || null;
-        let usuario: any;
         let administrador: any;
     
 
@@ -159,7 +158,7 @@ export const validarJWTUserPropioOAdmin = async(req: Request, res: Response, nex
     
 
         const respuestaJWT: any = jwt.verify(token, process.env.SECRETORPRIVATEKEY!);
-        usuario = await Models.Usuario.findById(respuestaJWT.id);
+        const usuario = await Models.Usuario.findById(respuestaJWT.id);
 
         if(!usuario){
             administrador = await Models.Administrador.findById(respuestaJWT.id);
@@ -191,7 +190,6 @@ export const validarJWTListaRepAdminOUserQueLoCreo = async(req: Request, res: Re
         
         const token = req.header('token') || null;
         const listaReproduccionID =req.params.id;
-        let usuario: any;
         let administrador: any;
 
 
@@ -199,7 +197,7 @@ export const validarJWTListaRepAdminOUserQueLoCreo = async(req: Request, res: Re
     
 
         const respuestaJWT: any = jwt.verify(token, process.env.SECRETORPRIVATEKEY!);
-        usuario = await Models.Usuario.findById(respuestaJWT.id);
+        const usuario = await Models.Usuario.findById(respuestaJWT.id);
 
         if(!usuario){
             administrador = await Models.Administrador.findById(respuestaJWT.id);
@@ -240,7 +238,6 @@ export const validarJWTCLR = async(req: Request, res: Response, next: NextFuncti
 
         const token = req.header('token') || null;
         const CLRID =req.params.id;
-        let usuario: any;
         let administrador: any;
 
 
@@ -251,7 +248,7 @@ export const validarJWTCLR = async(req: Request, res: Response, next: NextFuncti
 
         const CLRDB = await Models.CancionListaReproduccion.findById(CLRID);    
 
-        usuario = await Models.Usuario.findById(respuestaJWT.id);
+        const usuario = await Models.Usuario.findById(respuestaJWT.id);
 
         if(!usuario){
             administrador = await Models.Administrador.findById(respuestaJWT.id);
@@ -271,7 +268,6 @@ export const validarJWTCLR = async(req: Request, res: Response, next: NextFuncti
         next();
 
     }catch(error){
-        console.log(error);
         res.status(500).json({
             ok:false,
             error
@@ -290,7 +286,6 @@ export const validarJWTUsuariosInvitados = async(req: Request, res: Response, ne
 
         const token = req.header('token') || null;
         const usuariosInvitadosID =req.params.id;
-        let usuario: any;
         let administrador: any;
         
 
@@ -301,7 +296,7 @@ export const validarJWTUsuariosInvitados = async(req: Request, res: Response, ne
 
         const usuariosInvitadosDB = await Models.UsuariosInvitados.findById(usuariosInvitadosID);    
 
-        usuario = await Models.Usuario.findById(respuestaJWT.id);
+        const usuario = await Models.Usuario.findById(respuestaJWT.id);
 
         if(!usuario){
             administrador = await Models.Administrador.findById(respuestaJWT.id);
@@ -320,7 +315,6 @@ export const validarJWTUsuariosInvitados = async(req: Request, res: Response, ne
         next();
 
     }catch(error){
-        console.log(error);
         res.status(500).json({
             ok:false,
             error
@@ -340,16 +334,14 @@ export const validarJWTUltimaCancionPropioOAdmin = async(req: Request, res: Resp
     try{
 
         const token = req.header('token') || null;
-        let usuario: any;
         let administrador: any;
-
 
         if(!token) return res.status(400).json({ ok:false, mensage:'El token es obligatorio' });
 
 
         const respuestaJWT: any = jwt.verify(token, process.env.SECRETORPRIVATEKEY!);
 
-        usuario = await Models.Usuario.findById(respuestaJWT.id);
+        const usuario = await Models.Usuario.findById(respuestaJWT.id);
 
         if(!usuario){
             administrador = await Models.Administrador.findById(respuestaJWT.id);
@@ -367,7 +359,6 @@ export const validarJWTUltimaCancionPropioOAdmin = async(req: Request, res: Resp
         next();
 
     }catch(error){
-        console.log(error);
         res.status(500).json({
             ok:false,
             error
@@ -375,5 +366,3 @@ export const validarJWTUltimaCancionPropioOAdmin = async(req: Request, res: Resp
     }
 
 };
-
-
