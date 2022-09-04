@@ -2,6 +2,7 @@ import {Request, Response} from 'express';
 import fs from 'fs-extra';
 
 
+
 // helpers
 import {formateoRegistroCancion, formatoUpdateCancion} from '../../helpers/formatoData';
 
@@ -48,6 +49,20 @@ export const get = async (req: Request, res: Response) => {
 
 };
 
+export const getRandomCancion = async (req: Request, res: Response) => {
+
+    try{
+
+        const count  = await Cancion.countDocuments() as any;
+        const random = Math.floor(Math.random() * count);
+        const cancionDB = await Cancion.findOne().skip(random).exec();
+        res.status(200).send(msgSuccess('Peticion realizado Exitosamente', cancionDB));
+
+    }catch(error){
+        res.status(500).json(msgError('Contacte con el administrador'));
+    }
+
+};
 
 export const gets = async (req: Request, res: Response) => {
 

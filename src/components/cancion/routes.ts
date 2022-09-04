@@ -5,6 +5,7 @@ import {check} from 'express-validator';
 import {
     create,
     get,
+    getRandomCancion,
     gets,
     getsPorAlbum,
     getsPorAlbumPaginado,
@@ -53,6 +54,11 @@ router.get('/get/:id',
         validarJWTAdminOUser
     ],
     get
+);
+
+router.get('/getRandom',
+    validarJWTAdminOUser,
+    getRandomCancion
 );
 
 router.get('/gets/:pagina',
